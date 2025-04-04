@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión</title>
+    <link rel="stylesheet" href="style/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 50px;
+        }
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 30px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"] {
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #003f8f;
+        }
+        .form-container p {
+            text-align: center;
+            color: #333;
+        }
+        .foot{
+            padding-top: 20px;
+            text-align:center;
+        }
+        #errorUser #errorEmail #errorContrasena #errorEdad #errorTelefono{
+            color: red;
+            background-color: #ccc;
+            transition: all 4s;
+        }
+
+        #errorUser #errorEmail #errorContrasena #errorEdad #errorTelefono:hover{
+            color: red;
+            background-color: #ccc;
+        }
+
+    </style>
+</head>
+<body>
+        <div class="container">
+            <h1>Formulario - Iniciar sesión</h1>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="form-container">
+                <h2>Iniciar sesión</h2>
+                <form id="containerForm" method="POST">
+
+                    <label for="usuario">Nombre de usuario</label>
+                    <input id="usuario" type="text" name="usuario"  pattern="[a-z]" required>
+                    <span id="errorUser"></span>
+
+                    <label for="email" pattern=".+@example\.com">Correo eletronico</label>
+                    <input id="email" type="email" name="email" required>
+                    <span id="errorEmail"></span>
+
+                    <label for="contrasena">Contraseña</label>
+                    <input id="contrasena" type="password" name="contrasena"  pattern=".{6,}" required>
+                    <span id="errorContrasena"></span>
+
+                    <label for="edad">Edad</label>
+                    <input id="date" type="number" name="edad" max="2025-04-04" required>
+                    <span id="errorEdad"></span>
+
+                    <label for="telefono">Telefono</label>
+                    <input id="telefono" type="number" name="edad" pattern="\\d{9}" required>
+                    <span id="errorTelefono"></span>
+
+                    <input type="submit" name="login" value="Iniciar sesión">
+                </form>
+                <p>¿No tienes cuenta? <a href="registro.php">Regístrate</a></p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="foot">
+            <p>&copy; 2025 Periódico Digital. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById("usuario").addEventListener("input", function() {
+            if(!this.checkValidity()){
+                document.getElementById("errorUser").innerText = "Introduce texto";
+            } else {
+                document.getElementById("errorUser").innerText = "";
+
+            }
+        });
+
+        document.getElementById("email").addEventListener("input", function() {
+            if(!this.checkValidity()){
+                document.getElementById("errorEmail").innerText = "Introduce correctamente";
+            } else {
+                document.getElementById("errorEmail").innerText = "";
+
+            }
+        });
+
+
+        document.getElementById("contrasena").addEventListener("input", function() {
+            if(!this.checkValidity()){
+                document.getElementById("errorContrasena").innerText = "Introduce mas de 6 digitos";
+            } else {
+                document.getElementById("errorContrasena").innerText = "";
+
+            }
+        });
+
+
+
+        document.getElementById("edad").addEventListener("input", function() {
+            if(!this.checkValidity()){
+                document.getElementById("errorEdad").innerText = "Introduce no supera la data";
+            } else {
+                document.getElementById("errorEdad").innerText = "";
+
+            }
+        });
+
+
+        document.getElementById("telefono").addEventListener("input", function() {
+            if(!this.checkValidity()){
+                document.getElementById("errorTelefono").innerText = "9 digitos necessarios";
+            } else {
+                document.getElementById("errorTelefono").innerText = "";
+
+            }
+        });
+            
+    </script>
+</body>
+</html>
